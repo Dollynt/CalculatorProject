@@ -2,4 +2,5 @@
     <string name="app_name">CalculatorProject</string>
     <string name="hello_world">Hello World</string>
     <string name="change_label">Change Label</string>
+    <string name="label_changed">The button was added!</string>
 </resources>
