@@ -6,4 +6,5 @@
     <string name="sub">SUB</string>
     <string name="mult">MULT</string>
     <string name="div">DIV</string>
+    <string name="result"></string>
 </resources>
