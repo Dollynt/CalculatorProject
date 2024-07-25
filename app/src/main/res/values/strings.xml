@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CalculatorProject</string>
     <string name="calculator">Calculator</string>
+    <string name="enter_number">Enter the number:</string>
     <string name="sum">SUM</string>
     <string name="sub">SUB</string>
     <string name="mult">MULT</string>
