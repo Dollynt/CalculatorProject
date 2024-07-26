@@ -13,47 +13,33 @@ class MainActivity : ComponentActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.sumButton.setOnClickListener {
-            val num1 = binding.editTextNumber1.text.toString().toDoubleOrNull()
-            val num2 = binding.editTextNumber2.text.toString().toDoubleOrNull()
+        createListeners()
+    }
 
-            if (num1 != null && num2 != null) {
-                val sum = num1 + num2
-                binding.result.text = sum.toString()
+    private fun createListeners(){
+        binding.sumButton.setOnClickListener{ operation(option = 0) }
+        binding.subButton.setOnClickListener{ operation(option = 1) }
+        binding.multButton.setOnClickListener{ operation(option = 2) }
+        binding.divButton.setOnClickListener{ operation(option = 3) }
+    }
+
+    private fun operation(option: Int){
+        val number1 = binding.editTextNumber1.text.toString().toDoubleOrNull() ?: 0.0
+        val number2 = binding.editTextNumber2.text.toString().toDoubleOrNull() ?: 0.0
+
+        val result = when(option){
+            0 -> number1 + number2
+            1 -> number1 - number2
+            2 -> number1 * number2
+            3 -> if (number2 != 0.0){
+                number1 / number2
+            } else {
+                "Division by zero"
             }
+            else -> {}
         }
 
-        binding.subButton.setOnClickListener {
-            val num1 = binding.editTextNumber1.text.toString().toDoubleOrNull()
-            val num2 = binding.editTextNumber2.text.toString().toDoubleOrNull()
-
-            if (num1 != null && num2 != null) {
-                val sub = num1 - num2
-                binding.result.text = sub.toString()
-            }
-        }
-
-        binding.multButton.setOnClickListener {
-            val num1 = binding.editTextNumber1.text.toString().toDoubleOrNull()
-            val num2 = binding.editTextNumber2.text.toString().toDoubleOrNull()
-
-            if (num1 != null && num2 != null) {
-                val mult = num1 * num2
-                binding.result.text = mult.toString()
-            }
-        }
-
-        binding.divButton.setOnClickListener {
-            val num1 = binding.editTextNumber1.text.toString().toDoubleOrNull()
-            val num2 = binding.editTextNumber2.text.toString().toDoubleOrNull()
-
-            if (num1 != null && num2 != null) {
-                if (num2 != 0.0) {
-                    val div = num1 / num2
-                    binding.result.text = div.toString()
-                }
-            }
-        }
+        binding.result.text = result.toString()
     }
 }
 
